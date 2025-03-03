@@ -15,7 +15,7 @@ export default function  LoginForm() {
             <p className="text-red-500">{state?.message}</p>
         )}
         <Form action={formAction} className="flex flex-col bg-red-900 rounded-md p-4  font-bold border-indigo-700 gap-[0.2rem]">
-                    
+                    {/* FUI JANTAR */}
 
                     <label htmlFor="email">Email:</label>
                     <input name="email" id="email" className={styleInput} type="email" required />
