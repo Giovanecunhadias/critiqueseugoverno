@@ -3,6 +3,9 @@
 import { signIn } from "@/auth"
 import { isRedirectError } from "next/dist/client/components/redirect-error";
 
+interface ErrorMessage {
+    e: string,
+}
 
 export default async function loginAction( formData: FormData) {
     try{await signIn('credentials', {
@@ -13,11 +16,13 @@ export default async function loginAction( formData: FormData) {
     }
     )
         return{success: true};
-    }catch(e: any){
+    }catch(e: unknown){
         if(isRedirectError(e)){
             throw e
         }
-        if(e.type === 'CredentialsSignin'){ return{success: false, message: 'Suas crendencias incorretas'}};
+        if ((e as { type: string }).type === 'CredentialsSignin') {
+            return { success: false, message: 'Suas crendencias incorretas' };
+        }
        return{success: false, message: 'Ocorreu um erro'}
     }
 }
