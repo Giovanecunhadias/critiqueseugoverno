@@ -9,6 +9,10 @@ export default function PostForm() {
     const [state, formAction, isPending] = useActionState(postAction, null);
 
     return(
+        <>
+        {state?.success === false &&(
+            <p className="text-red-500">{state?.error}</p>
+        )}
         <Form action={formAction} className="flex flex-col font-bold border-indigo-700 gap-[0.2rem]">
 
 
@@ -18,8 +22,9 @@ export default function PostForm() {
             <label htmlFor="content">Conteúdo:</label>
             <input name="content" id="content" type="text" required />
 
-            <button  type="submit" className="w-full bg-blue-500 p-1 rounded-lg flex items-center justify-center">Criar</button>
+            <button  disabled={isPending } type="submit" className="w-full bg-blue-500 p-1 rounded-lg flex items-center justify-center">Criar</button>
         </Form>
+        </>
     )
 
 }
