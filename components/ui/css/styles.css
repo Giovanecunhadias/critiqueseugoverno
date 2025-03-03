@@ -1,0 +1,36 @@
+@keyframes typing {
+    0%, 27% { content: ""; }
+    1%, 26% { content: "C"; }
+    2%, 25% { content: "Cr"; }
+    3%, 24% { content: "Cri"; }
+    4%, 23% { content: "Crit"; }
+    5%, 22% { content: "Criti"; }
+    6%, 21% { content: "Critic"; }
+    7%, 20% { content: "Critique"; }
+    8%, 19% { content: "Critique "; }
+    9%, 18% { content: "Critique s"; }
+    10%, 17% { content: "Critique se"; }
+    11%, 16% { content: "Critique seu"; }
+    12%, 15% { content: "Critique seu g"; }
+    13%, 14% { content: "Critique seu go"; }
+    14%, 13% { content: "Critique seu gov"; }
+    15%, 12% { content: "Critique seu gove"; }
+    16%, 11% { content: "Critique seu gover"; }
+    17%, 100% { content: "Critiquem seus governo"; }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.typewriter::before {
+    content: "critique seu governo";
+    animation: typing 9s steps(10, end) forwards;
+}
+
+.typewriter::after {
+    content: "s";
+    border-right: 2px solid currentColor;
+    animation: blink 0.2s infinite;
+}
