@@ -14,7 +14,7 @@ export default function  LoginForm() {
         {state?.success === false &&(
             <p className="text-red-500">{state?.message}</p>
         )}
-        <Form action={formAction} className="flex flex-col font-bold border-indigo-700 gap-[0.2rem]">
+        <Form action={formAction} className="flex flex-col bg-red-900 rounded-md p-4  font-bold border-indigo-700 gap-[0.2rem]">
                     
 
                     <label htmlFor="email">Email:</label>
