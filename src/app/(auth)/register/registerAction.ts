@@ -4,7 +4,7 @@ import
 { redirect } from 'next/navigation'
 import { hashSync } from 'bcrypt'
 
-export default async function registerAction(_prevState: any, formData: FormData){
+export default async function registerAction( formData: FormData){
     
       
     const entries = Array.from(formData.entries())

@@ -1,15 +1,19 @@
 'use client';
 
-import { ChangeEvent, useRef, useState, useTransition } from "react";
+
 import { useActionState } from "react";
 import registerAction from "./registerAction";
 import Form from "next/form";
 
 export default function RegisterForm() {
-  const styleInput = 'p-1 rounded-md bg-white focus:outline-none font-normal text-black';
-  const [state, formAction, isPending] = useActionState(registerAction, null);
-
+  const wrappedRegisterAction = async (state: any, formData: FormData) => {
+    const result = await registerAction(formData);
+    return { error: result.error, success: result.success, message: result.message };
+  };
   
+  const [state, formAction, isPending] = useActionState(wrappedRegisterAction, null);
+
+  const styleInput = 'p-1 rounded-md focus:outline-none font-normal';
 
 
   const handleSubmit = async (formData: FormData) => {

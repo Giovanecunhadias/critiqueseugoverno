@@ -4,7 +4,7 @@ import { signIn } from "@/auth"
 import { isRedirectError } from "next/dist/client/components/redirect-error";
 
 
-export default async function loginAction(_prevState: any, formData: FormData) {
+export default async function loginAction( formData: FormData) {
     try{await signIn('credentials', {
         email: formData.get('email') as string,
         password: formData.get('password') as string,

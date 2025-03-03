@@ -4,7 +4,11 @@ import Form  from "next/form";
 import { useActionState } from "react";	
 export default function  LoginForm() {
     const styleInput = 'p-1 rounded-md focus:outline-none font-normal';
-    const [state, formAction, isPending]= useActionState(loginAction, null)
+    const wrappedLoginAction = async (state: any, formData: FormData) => {
+        const result = await loginAction(formData);
+        return { error: result.message, success: result.success, message: result.message };
+    };
+    const [state, formAction, isPending] = useActionState(wrappedLoginAction, null);
     return(
         <>
         {state?.success === false &&(
